@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    margin: 0 auto;
+    width: 1000px;
+    height: 1000px;
+    text-align: center;
+    position: relative;
+}
+ul, ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+    outline: 0;
+}
+#img {
+    opacity: 0.9;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    z-index: -1;
+}
+img {
+    border-radius: 25px;
+}
+header {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 70px;
+    color: white;
+    text-shadow: 3px 3px 5px black;
+}
+.option{
+    padding: 10px;
+    margin: 0;
+    width: 170px;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -33%);
+}
+.option > li {
+    /*메뉴에 relative 걸고 사이드 ul에 absolute*/
+    position: relative;
+}
+.option > li > a {
+    line-height: 50px;
+    height: 50px;
+    background: rgba(24, 12, 117, 0.747);
+    display: block;
+    color: white;
+    transition: all 0.5s ease-in-out;
+    font-family: "Noto Serif", serif;
+    font-size: 14px;
+}
+.option > li > a:hover {
+    background: rgba(237, 157, 92, 0.751);
+}
+/*마지막 요소 제외하고 메뉴 중간에 구분선 추가*/
+.option > li:not(:last-child) {
+    border-bottom: solid white 1px;
+}
+/*2depth*/
+.option ul {
+    position: absolute;
+    transition: all 0.4s;
+    /*left를 0으로 줘야 사이드메뉴 hover할 때 겹쳐지지 않음*/
+    left: 0;
+    top: 0;
+    opacity: 0;
+    display: none;
+}
+.option ul a {
+    /*inline-block으로 둬야 높이, 넓이 설정 가능*/
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.631);
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    transition: all 0.5s ease;
+    color: gray;
+    font-family: "Noto Serif", serif;
+    font-size: 13px;
+}
+.option ul li:not(:last-child) {
+    border-bottom: solid white 1px;
+}
+/*메뉴 누르면 사이드메뉴 나옴*/
+/*a:hover 하면 안 나오고 li:hover 하니까 나옴 왜지*/
+.option > li:hover ul {
+    opacity: 0.8;
+    display: block;
+    /*전체의 left는 0으로 잡고, hover했을 때 left:180으로 설정함*/
+    left: 170px;
+}
+.option ul a:hover {
+    background: rgba(0, 0, 0, 0.914);
+    color: white;
+}
